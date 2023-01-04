@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
+# Tạo mô hình
 class Address(models.Model):
     user = models.ForeignKey(User, verbose_name="User", on_delete=models.CASCADE)
     locality = models.CharField(max_length=150, verbose_name="Nearest Location")
@@ -62,7 +62,7 @@ class Cart(models.Model):
     def __str__(self):
         return str(self.user)
     
-    # Creating Model Property to calculate Quantity x Price
+    # Quantity x Price
     @property
     def total_price(self):
         return self.quantity * self.product.price
