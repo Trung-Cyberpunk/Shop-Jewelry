@@ -7,10 +7,8 @@ from django.contrib import messages
 from django.views import View
 import decimal
 from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator # for Class Based Views
+from django.utils.decorators import method_decorator 
 
-
-# Create your views here.
 
 def home(request):
     categories = Category.objects.filter(is_active=True, is_featured=True)[:3]
@@ -50,7 +48,6 @@ def category_products(request, slug):
     return render(request, 'store/category_products.html', context)
 
 
-# Authentication Starts Here
 
 class RegistrationView(View):
     def get(self, request):
@@ -104,7 +101,6 @@ def add_to_cart(request):
     product_id = request.GET.get('prod_id')
     product = get_object_or_404(Product, id=product_id)
 
-    # Check whether the Product is alread in Cart or Not
     item_already_in_cart = Cart.objects.filter(product=product_id, user=user)
     if item_already_in_cart:
         cp = get_object_or_404(Cart, product=product_id, user=user)
@@ -121,17 +117,14 @@ def cart(request):
     user = request.user
     cart_products = Cart.objects.filter(user=user)
 
-    # Display Total on Cart Page
     amount = decimal.Decimal(0)
     shipping_amount = decimal.Decimal(10)
-    # using list comprehension to calculate total amount based on quantity and shipping
     cp = [p for p in Cart.objects.all() if p.user==user]
     if cp:
         for p in cp:
             temp_amount = (p.quantity * p.product.price)
             amount += temp_amount
 
-    # Customer Addresses
     addresses = Address.objects.filter(user=user)
 
     context = {
@@ -166,7 +159,6 @@ def plus_cart(request, cart_id):
 def minus_cart(request, cart_id):
     if request.method == 'GET':
         cp = get_object_or_404(Cart, id=cart_id)
-        # Remove the Product if the quantity is already 1
         if cp.quantity == 1:
             cp.delete()
         else:
@@ -181,12 +173,10 @@ def checkout(request):
     address_id = request.GET.get('address')
     
     address = get_object_or_404(Address, id=address_id)
-    # Get all the products of User in Cart
     cart = Cart.objects.filter(user=user)
     for c in cart:
-        # Saving all the products from Cart to Order
         Order(user=user, address=address, product=c.product, quantity=c.quantity).save()
-        # And Deleting from Cart
+        
         c.delete()
     return redirect('store:orders')
 
