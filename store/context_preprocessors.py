@@ -1,13 +1,13 @@
 from .models import Category, Cart
 
-
+# List categories
 def store_menu(request):
     categories = Category.objects.filter(is_active=True)
     context = {
         'categories_menu': categories,
     }
     return context
-
+# list cart
 def cart_menu(request):
     if request.user.is_authenticated:
         cart_items= Cart.objects.filter(user=request.user)

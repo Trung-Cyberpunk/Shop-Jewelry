@@ -7,9 +7,11 @@ from django.contrib.auth import views as auth_views
 app_name = 'store'
 
 
+# LINK SẢN PHẨM 
+
 urlpatterns = [
     path('', views.home, name="home"),
-    # URL for Cart and Checkout
+    # URL cart
     path('add-to-cart/', views.add_to_cart, name="add-to-cart"),
     path('remove-cart/<int:cart_id>/', views.remove_cart, name="remove-cart"),
     path('plus-cart/<int:cart_id>/', views.plus_cart, name="plus-cart"),

@@ -1,9 +1,7 @@
 """
-ASGI config for jewelryshop project.
+Cấu hình cho ASGI cho project 
 
-It exposes the ASGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
+Với biến cấp module là applicattion
 https://docs.djangoproject.com/en/3.2/howto/deployment/asgi/
 """
 

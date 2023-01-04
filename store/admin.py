@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Address, Category, Product, Cart, Order
 
-# Register your models here.
+# Đăng ký admin
 class AddressAdmin(admin.ModelAdmin):
     list_display = ('user', 'locality', 'city', 'state')
     list_filter = ('city', 'state')

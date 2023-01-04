@@ -7,7 +7,8 @@ from django.contrib import messages
 from django.views import View
 import decimal
 from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator # for Class Based Views
+from django.utils.decorators import method_decorator 
+# for Class Based Views
 
 
 # Create your views here.
@@ -181,12 +182,12 @@ def checkout(request):
     address_id = request.GET.get('address')
     
     address = get_object_or_404(Address, id=address_id)
-    # Get all the products of User in Cart
+    # Nhận sản phẩm người dùng tỏng giỏ hàng mang theo
     cart = Cart.objects.filter(user=user)
     for c in cart:
-        # Saving all the products from Cart to Order
+        # Lưu tất cả sản phẩm giỏ hàng
         Order(user=user, address=address, product=c.product, quantity=c.quantity).save()
-        # And Deleting from Cart
+        # Xóa khỏi giỏ hàng
         c.delete()
     return redirect('store:orders')
 

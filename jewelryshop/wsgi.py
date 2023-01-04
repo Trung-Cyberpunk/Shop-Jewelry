@@ -1,9 +1,6 @@
 """
-WSGI config for jewelryshop project.
+Cấu hình cho WGSI cho project
 
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
 https://docs.djangoproject.com/en/3.2/howto/deployment/wsgi/
 """
 

@@ -10,7 +10,7 @@ urlpatterns = [
     path('', include('store.urls')),
 ]
 
-# To display images
+# Hiển thị hình ảnh link
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
