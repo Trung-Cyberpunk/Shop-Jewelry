@@ -12,7 +12,6 @@ Thành viên Nhóm 1:
 I.	Mô tả dự án:
 -	Là một trang web bán hàng được chúng em xây dựng bằng Django(python) dưới dạng là một trang web bán trang sức(Jewerly Shop).
 -	Chúng em sử dụng framework django python và đã tham khảo các tài liệu cần có trên các nền tảng để có thể chúng em xây dựng các chức năng của trang web.
--	Chúng em đã hoàn thành dự án lần này và có một số chức năng chúng em chưa thể hoàn thiện chỉnh chu một cách tốt nhất.
 
 II.	Các chức năng của dự án:
 1.	Thiết kế giao diện:
